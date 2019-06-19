@@ -1,12 +1,15 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
 
-  Future<void> _signOut() async {
+  Future<void> _signOut(BuildContext context) async {
     try {
-      await FirebaseAuth.instance.signOut();
+      final firebaseAuth = Provider.of<FirebaseAuth>(context);
+      await firebaseAuth.signOut();
     } catch (e) {
       print(e); // TODO: show dialog with error
     }
@@ -26,7 +29,7 @@ class HomePage extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            onPressed: _signOut,
+            onPressed: ()=> _signOut(context),
           ),
         ],
       ),
