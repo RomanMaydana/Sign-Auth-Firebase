@@ -1,15 +1,14 @@
 import 'dart:async';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth_flow/service/firebase_auth_service.dart';
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
 
   Future<void> _signOut(BuildContext context) async {
     try {
-      final firebaseAuth = Provider.of<FirebaseAuth>(context);
-      await firebaseAuth.signOut();
+      final auth = Provider.of<FirebaseAuthService>(context);
+      await auth.signOut();
     } catch (e) {
       print(e); // TODO: show dialog with error
     }

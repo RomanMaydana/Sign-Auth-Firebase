@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_flow/landing_page.dart';
+import 'package:firebase_auth_flow/service/firebase_auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,8 +11,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Provider<FirebaseAuth>(
-      builder: (_) => FirebaseAuth.instance,
+    return Provider<FirebaseAuthService>(
+      builder: (_) => FirebaseAuthService(),
       child: MaterialApp(
         theme: ThemeData(primarySwatch: Colors.indigo),
         home: LandingPage(),
